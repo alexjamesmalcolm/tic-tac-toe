@@ -50,6 +50,7 @@ public class Board {
 		return board.get(col + row * 3);
 	}
 
+	@Override
 	public String toString() {
 		String output = "";
 		for (int i = 0; i < 9; i++) {
@@ -115,31 +116,37 @@ public class Board {
 	private Collection<Spot> getDiag(int diagNum) {
 		Collection<Spot> diag = new ArrayList<>();
 		if (diagNum == 0) {
-			diag.add(board.get(0));
-			diag.add(board.get(4));
-			diag.add(board.get(8));
+			for (int i = 0; i < 3; i++) {
+				// 0, 4, 8
+				int num = i * 4;
+				diag.add(board.get(num));
+			}
 		}
 		if (diagNum == 1) {
-			diag.add(board.get(2));
-			diag.add(board.get(4));
-			diag.add(board.get(6));
+			for (int i = 0; i < 3; i++) {
+				// 2, 4, 6
+				int num = 2 + i * 2;
+				diag.add(board.get(num));
+			}
 		}
 		return diag;
 	}
 
 	private Collection<Spot> getCol(int colNum) {
 		Collection<Spot> col = new ArrayList<>();
-		col.add(board.get(colNum + 0 * 3));
-		col.add(board.get(colNum + 1 * 3));
-		col.add(board.get(colNum + 2 * 3));
+		for (int i = 0; i < 3; i++) {
+			int num = colNum + i * 3;
+			col.add(board.get(num));
+		}
 		return col;
 	}
 
 	private Collection<Spot> getRow(int rowNum) {
 		Collection<Spot> row = new ArrayList<>();
-		row.add(board.get(0 + rowNum * 3));
-		row.add(board.get(1 + rowNum * 3));
-		row.add(board.get(2 + rowNum * 3));
+		for (int i = 0; i < 3; i++) {
+			int num = i + rowNum * 3;
+			row.add(board.get(num));
+		}
 		return row;
 	}
 
