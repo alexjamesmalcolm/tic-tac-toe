@@ -128,4 +128,14 @@ public class BoardTest {
 		boolean status = underTest.hasXWon();
 		assertFalse(status);
 	}
+	
+	@Test
+	public void shouldHaveXWinFromMiddleRow() {
+		emptyBoard.put(3, "x");
+		emptyBoard.put(4, "x");
+		emptyBoard.put(5, "x");
+		Board underTest = new Board(emptyBoard);
+		boolean status = underTest.hasXWon();
+		assertTrue(status);
+	}
 }

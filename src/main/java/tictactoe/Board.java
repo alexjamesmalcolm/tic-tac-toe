@@ -67,8 +67,18 @@ public class Board {
 	public boolean hasXWon() {
 		Collection<Spot> row = getRow(0);
 		boolean status = true;
-		for(Spot spot : row) {
-			if(!spot.getSymbol().equals("x")) {
+		for (Spot spot : row) {
+			if (!spot.getSymbol().equals("x")) {
+				status = false;
+			}
+		}
+		if (status) {
+			return status;
+		}
+		status = true;
+		row = getRow(1);
+		for( Spot spot: row) {
+			if (!spot.getSymbol().equals("x")) {
 				status = false;
 			}
 		}
@@ -77,9 +87,9 @@ public class Board {
 
 	private Collection<Spot> getRow(int i) {
 		Collection<Spot> row = new ArrayList<>();
-		row.add(board.get(0));
-		row.add(board.get(1));
-		row.add(board.get(2));
+		row.add(board.get(0 + i * 3));
+		row.add(board.get(1 + i * 3));
+		row.add(board.get(2 + i * 3));
 		return row;
 	}
 
