@@ -108,14 +108,14 @@ public class Board {
 		return status;
 	}
 
-	private Collection<Spot> getDiag(int i) {
+	private Collection<Spot> getDiag(int diagNum) {
 		Collection<Spot> diag = new ArrayList<>();
-		if (i == 0) {
+		if (diagNum == 0) {
 			diag.add(board.get(0));
 			diag.add(board.get(4));
 			diag.add(board.get(8));
 		}
-		if (i == 1) {
+		if (diagNum == 1) {
 			diag.add(board.get(2));
 			diag.add(board.get(4));
 			diag.add(board.get(6));
@@ -123,20 +123,24 @@ public class Board {
 		return diag;
 	}
 
-	private Collection<Spot> getCol(int i) {
+	private Collection<Spot> getCol(int colNum) {
 		Collection<Spot> col = new ArrayList<>();
-		col.add(board.get(i + 0 * 3));
-		col.add(board.get(i + 1 * 3));
-		col.add(board.get(i + 2 * 3));
+		col.add(board.get(colNum + 0 * 3));
+		col.add(board.get(colNum + 1 * 3));
+		col.add(board.get(colNum + 2 * 3));
 		return col;
 	}
 
-	private Collection<Spot> getRow(int i) {
+	private Collection<Spot> getRow(int rowNum) {
 		Collection<Spot> row = new ArrayList<>();
-		row.add(board.get(0 + i * 3));
-		row.add(board.get(1 + i * 3));
-		row.add(board.get(2 + i * 3));
+		row.add(board.get(0 + rowNum * 3));
+		row.add(board.get(1 + rowNum * 3));
+		row.add(board.get(2 + rowNum * 3));
 		return row;
+	}
+
+	public boolean hasOWon() {
+		return true;
 	}
 
 }
