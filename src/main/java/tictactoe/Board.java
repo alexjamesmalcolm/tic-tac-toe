@@ -20,10 +20,7 @@ public class Board {
 	}
 
 	public Spot getSpot(String row, String col) {
-		if(row.equals("Bottom")) {
-			return new Spot("o");
-		}
-		return new Spot("x");
+		return board.get(4);
 	}
 
 	public String toString() {

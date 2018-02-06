@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class BoardTest {
-	
+
 	private Map<Integer, String> allXBoard;
 	private Map<Integer, String> allOBoard;
 
@@ -48,7 +48,7 @@ public class BoardTest {
 		String returned = underTest.toString();
 		assertThat(returned, is("o|o|o\no|o|o\no|o|o"));
 	}
-	
+
 	@Test
 	public void shouldHaveMiddleCenterBeX() {
 		allOBoard.put(4, "x");
@@ -59,10 +59,10 @@ public class BoardTest {
 	}
 	
 	@Test
-	public void shouldHaveBottomCenterBeO() {
-		allXBoard.put(7, "o");
-		Board underTest = new Board(allOBoard);
-		Spot spot = underTest.getSpot("Bottom", "Center");
+	public void shouldHaveMiddleCenterBeO() {
+		allXBoard.put(4, "o");
+		Board underTest = new Board(allXBoard);
+		Spot spot = underTest.getSpot("Middle", "Center");
 		String symbol = spot.getSymbol();
 		assertThat(symbol, is("o"));
 	}
