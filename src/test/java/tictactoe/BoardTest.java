@@ -188,4 +188,13 @@ public class BoardTest {
 		boolean status = underTest.hasOWon();
 		assertThat(status, is(true));
 	}
+	
+	@Test
+	public void shouldHaveONotWinFromSecondDiagonal() {
+		emptyBoard.put(2, "o");
+		emptyBoard.put(6, "o");
+		Board underTest = new Board(emptyBoard);
+		boolean status = underTest.hasOWon();
+		assertThat(status, is(false));
+	}
 }

@@ -65,13 +65,17 @@ public class Board {
 	}
 
 	public boolean hasXWon() {
+		return hasSomeoneWon("x");
+	}
+
+	private boolean hasSomeoneWon(String winSymbol) {
 		Collection<Spot> row;
 		boolean status = true;
 		for (int i = 0; i < 3; i++) {
 			row = getRow(i);
 			status = true;
 			for (Spot spot : row) {
-				if (!spot.getSymbol().equals("x")) {
+				if (!spot.getSymbol().equals(winSymbol)) {
 					status = false;
 				}
 			}
@@ -84,7 +88,7 @@ public class Board {
 			col = getCol(i);
 			status = true;
 			for (Spot spot : col) {
-				if (!spot.getSymbol().equals("x")) {
+				if (!spot.getSymbol().equals(winSymbol)) {
 					status = false;
 				}
 			}
@@ -97,7 +101,7 @@ public class Board {
 			diag = getDiag(i);
 			status = true;
 			for (Spot spot : diag) {
-				if (!spot.getSymbol().equals("x")) {
+				if (!spot.getSymbol().equals(winSymbol)) {
 					status = false;
 				}
 			}
@@ -140,7 +144,7 @@ public class Board {
 	}
 
 	public boolean hasOWon() {
-		return true;
+		return hasSomeoneWon("o");
 	}
 
 }
