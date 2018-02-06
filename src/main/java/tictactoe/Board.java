@@ -20,6 +20,9 @@ public class Board {
 	}
 
 	public Spot getSpot(String row, String col) {
+		if(row.equals("Left")) {
+			return board.get(3);
+		}
 		return board.get(4);
 	}
 

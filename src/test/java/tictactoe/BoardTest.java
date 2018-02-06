@@ -57,7 +57,7 @@ public class BoardTest {
 		String symbol = spot.getSymbol();
 		assertThat(symbol, is("x"));
 	}
-	
+
 	@Test
 	public void shouldHaveMiddleCenterBeO() {
 		allXBoard.put(4, "o");
@@ -65,5 +65,14 @@ public class BoardTest {
 		Spot spot = underTest.getSpot("Middle", "Center");
 		String symbol = spot.getSymbol();
 		assertThat(symbol, is("o"));
+	}
+
+	@Test
+	public void shouldHaveLeftCenterBeX() {
+		allOBoard.put(3, "x");
+		Board underTest = new Board(allOBoard);
+		Spot spot = underTest.getSpot("Left", "Center");
+		String symbol = spot.getSymbol();
+		assertThat(symbol, is("x"));
 	}
 }
