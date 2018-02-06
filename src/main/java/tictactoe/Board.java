@@ -1,5 +1,7 @@
 package tictactoe;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -63,7 +65,22 @@ public class Board {
 	}
 
 	public boolean hasXWon() {
-		return true;
+		Collection<Spot> row = getRow(0);
+		boolean status = true;
+		for(Spot spot : row) {
+			if(!spot.getSymbol().equals("x")) {
+				status = false;
+			}
+		}
+		return status;
+	}
+
+	private Collection<Spot> getRow(int i) {
+		Collection<Spot> row = new ArrayList<>();
+		row.add(board.get(0));
+		row.add(board.get(1));
+		row.add(board.get(2));
+		return row;
 	}
 
 }

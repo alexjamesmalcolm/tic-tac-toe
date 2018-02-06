@@ -1,6 +1,7 @@
 package tictactoe;
 
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -117,5 +118,14 @@ public class BoardTest {
 		Board underTest = new Board(emptyBoard);
 		boolean status = underTest.hasXWon();
 		assertTrue(status);
+	}
+	
+	@Test
+	public void shouldHaveXNotWin() {
+		emptyBoard.put(0, "x");
+		emptyBoard.put(2, "x");
+		Board underTest = new Board(emptyBoard);
+		boolean status = underTest.hasXWon();
+		assertFalse(status);
 	}
 }
