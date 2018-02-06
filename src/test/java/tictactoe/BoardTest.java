@@ -160,10 +160,20 @@ public class BoardTest {
 	}
 	
 	@Test
-	public void shouldHaveXWinFromDiagonal() {
+	public void shouldHaveXWinFromFirstDiagonal() {
 		emptyBoard.put(0, "x");
 		emptyBoard.put(4, "x");
 		emptyBoard.put(8, "x");
+		Board underTest = new Board(emptyBoard);
+		boolean status = underTest.hasXWon();
+		assertThat(status, is(true));
+	}
+	
+	@Test
+	public void shouldHaveXWinFromSecondDiagonal() {
+		emptyBoard.put(2, "x");
+		emptyBoard.put(4, "x");
+		emptyBoard.put(6, "x");
 		Board underTest = new Board(emptyBoard);
 		boolean status = underTest.hasXWon();
 		assertThat(status, is(true));

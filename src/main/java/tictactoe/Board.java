@@ -110,9 +110,16 @@ public class Board {
 
 	private Collection<Spot> getDiag(int i) {
 		Collection<Spot> diag = new ArrayList<>();
-		diag.add(board.get(0));
-		diag.add(board.get(4));
-		diag.add(board.get(8));
+		if (i == 0) {
+			diag.add(board.get(0));
+			diag.add(board.get(4));
+			diag.add(board.get(8));
+		}
+		if (i == 1) {
+			diag.add(board.get(2));
+			diag.add(board.get(4));
+			diag.add(board.get(6));
+		}
 		return diag;
 	}
 
