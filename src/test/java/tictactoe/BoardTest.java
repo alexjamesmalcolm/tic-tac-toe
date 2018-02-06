@@ -3,6 +3,7 @@ package tictactoe;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -14,6 +15,7 @@ public class BoardTest {
 
 	private Map<Integer, String> allXBoard;
 	private Map<Integer, String> allOBoard;
+	private Map<Integer, String> emptyBoard;
 
 	@Before
 	public void setup() {
@@ -24,6 +26,10 @@ public class BoardTest {
 		allOBoard = new TreeMap<>();
 		for (int i = 0; i < 9; i++) {
 			allOBoard.put(i, "o");
+		}
+		emptyBoard = new TreeMap<>();
+		for (int i = 0; i < 9; i++) {
+			emptyBoard.put(i, "");
 		}
 	}
 
@@ -101,5 +107,15 @@ public class BoardTest {
 		Spot spot = underTest.getSpot("Middle", "Top");
 		String symbol = spot.getSymbol();
 		assertThat(symbol, is("x"));
+	}
+	
+	@Test
+	public void shouldHaveXWon() {
+		emptyBoard.put(0, "x");
+		emptyBoard.put(1, "x");
+		emptyBoard.put(2, "x");
+		Board underTest = new Board(emptyBoard);
+		boolean status = underTest.hasXWon();
+		assertTrue(status);
 	}
 }

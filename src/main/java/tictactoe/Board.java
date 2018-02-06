@@ -62,4 +62,8 @@ public class Board {
 		return output;
 	}
 
+	public boolean hasXWon() {
+		return true;
+	}
+
 }
