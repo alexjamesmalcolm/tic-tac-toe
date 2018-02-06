@@ -79,7 +79,27 @@ public class Board {
 				return status;
 			}
 		}
+		for (int i = 0; i < 3; i++) {
+			row = getCol(i);
+			status = true;
+			for (Spot spot : row) {
+				if (!spot.getSymbol().equals("x")) {
+					status = false;
+				}
+			}
+			if (status) {
+				return status;
+			}
+		}
 		return status;
+	}
+
+	private Collection<Spot> getCol(int i) {
+		Collection<Spot> col = new ArrayList<>();
+		col.add(board.get(i + 0 * 3));
+		col.add(board.get(i + 1 * 3));
+		col.add(board.get(i + 2 * 3));
+		return col;
 	}
 
 	private Collection<Spot> getRow(int i) {
