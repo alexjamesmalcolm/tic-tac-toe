@@ -138,4 +138,14 @@ public class BoardTest {
 		boolean status = underTest.hasXWon();
 		assertTrue(status);
 	}
+	
+	@Test
+	public void shouldHaveXWinFromBottomRow() {
+		emptyBoard.put(6, "x");
+		emptyBoard.put(7, "x");
+		emptyBoard.put(8, "x");
+		Board underTest = new Board(emptyBoard);
+		boolean status = underTest.hasXWon();
+		assertThat(status, is(true));
+	}
 }

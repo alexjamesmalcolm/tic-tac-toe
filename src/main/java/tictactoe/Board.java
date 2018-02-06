@@ -65,21 +65,18 @@ public class Board {
 	}
 
 	public boolean hasXWon() {
-		Collection<Spot> row = getRow(0);
+		Collection<Spot> row;
 		boolean status = true;
-		for (Spot spot : row) {
-			if (!spot.getSymbol().equals("x")) {
-				status = false;
+		for (int i = 0; i < 3; i++) {
+			row = getRow(i);
+			status = true;
+			for (Spot spot : row) {
+				if (!spot.getSymbol().equals("x")) {
+					status = false;
+				}
 			}
-		}
-		if (status) {
-			return status;
-		}
-		status = true;
-		row = getRow(1);
-		for( Spot spot: row) {
-			if (!spot.getSymbol().equals("x")) {
-				status = false;
+			if (status) {
+				return status;
 			}
 		}
 		return status;
