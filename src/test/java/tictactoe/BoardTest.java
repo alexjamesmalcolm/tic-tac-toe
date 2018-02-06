@@ -75,4 +75,13 @@ public class BoardTest {
 		String symbol = spot.getSymbol();
 		assertThat(symbol, is("x"));
 	}
+
+	@Test
+	public void shouldHaveRightCenterBeX() {
+		allOBoard.put(5, "x");
+		Board underTest = new Board(allOBoard);
+		Spot spot = underTest.getSpot("Right", "Center");
+		String symbol = spot.getSymbol();
+		assertThat(symbol, is("x"));
+	}
 }
