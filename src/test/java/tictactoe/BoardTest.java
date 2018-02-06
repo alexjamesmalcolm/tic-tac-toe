@@ -84,4 +84,13 @@ public class BoardTest {
 		String symbol = spot.getSymbol();
 		assertThat(symbol, is("x"));
 	}
+
+	@Test
+	public void shouldHaveLeftTopBeX() {
+		allOBoard.put(0, "x");
+		Board underTest = new Board(allOBoard);
+		Spot spot = underTest.getSpot("Left", "Top");
+		String symbol = spot.getSymbol();
+		assertThat(symbol, is("x"));
+	}
 }

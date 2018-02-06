@@ -21,10 +21,14 @@ public class Board {
 
 	public Spot getSpot(String row, String col) {
 		int location = 4;
-		if(row.equals("Left")) {
-			location = 3;
+		if (row.equals("Left")) {
+			if (col.equals("Top")) {
+				location = 0;
+			} else {
+				location = 3;
+			}
 		}
-		if(row.equals("Right")) {
+		if (row.equals("Right")) {
 			location = 5;
 		}
 		return board.get(location);
