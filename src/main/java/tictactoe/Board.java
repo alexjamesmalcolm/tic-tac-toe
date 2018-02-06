@@ -79,10 +79,24 @@ public class Board {
 				return status;
 			}
 		}
+		Collection<Spot> col;
 		for (int i = 0; i < 3; i++) {
-			row = getCol(i);
+			col = getCol(i);
 			status = true;
-			for (Spot spot : row) {
+			for (Spot spot : col) {
+				if (!spot.getSymbol().equals("x")) {
+					status = false;
+				}
+			}
+			if (status) {
+				return status;
+			}
+		}
+		Collection<Spot> diag;
+		for (int i = 0; i < 2; i++) {
+			diag = getDiag(i);
+			status = true;
+			for (Spot spot : diag) {
 				if (!spot.getSymbol().equals("x")) {
 					status = false;
 				}
@@ -92,6 +106,14 @@ public class Board {
 			}
 		}
 		return status;
+	}
+
+	private Collection<Spot> getDiag(int i) {
+		Collection<Spot> diag = new ArrayList<>();
+		diag.add(board.get(0));
+		diag.add(board.get(4));
+		diag.add(board.get(8));
+		return diag;
 	}
 
 	private Collection<Spot> getCol(int i) {

@@ -158,4 +158,14 @@ public class BoardTest {
 		boolean status = underTest.hasXWon();
 		assertThat(status, is(true));
 	}
+	
+	@Test
+	public void shouldHaveXWinFromDiagonal() {
+		emptyBoard.put(0, "x");
+		emptyBoard.put(4, "x");
+		emptyBoard.put(8, "x");
+		Board underTest = new Board(emptyBoard);
+		boolean status = underTest.hasXWon();
+		assertThat(status, is(true));
+	}
 }
