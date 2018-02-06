@@ -2,12 +2,14 @@ package tictactoe;
 
 public class Spot {
 
+	private String symbol;
+
 	public Spot(String symbol) {
+		this.symbol = symbol;
 	}
 
 	public String getSymbol() {
-		// TODO Auto-generated method stub
-		return "";
+		return symbol;
 	}
 
 }
