@@ -30,7 +30,7 @@ public class BoardTest {
 	@Test
 	public void shouldHaveTopLeft() {
 		Board underTest = new Board();
-		Spot spot = underTest.getSpot("Top", "Left");
+		Spot spot = underTest.getSpot(0, 0);
 		assertNotNull(spot);
 	}
 
@@ -90,6 +90,15 @@ public class BoardTest {
 		allOBoard.put(0, "x");
 		Board underTest = new Board(allOBoard);
 		Spot spot = underTest.getSpot("Left", "Top");
+		String symbol = spot.getSymbol();
+		assertThat(symbol, is("x"));
+	}
+	
+	@Test
+	public void shouldHaveMiddleTopBeX() {
+		allOBoard.put(1, "x");
+		Board underTest = new Board(allOBoard);
+		Spot spot = underTest.getSpot("Middle", "Top");
 		String symbol = spot.getSymbol();
 		assertThat(symbol, is("x"));
 	}

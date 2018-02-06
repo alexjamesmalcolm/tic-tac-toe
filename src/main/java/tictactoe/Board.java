@@ -19,19 +19,33 @@ public class Board {
 		this(new TreeMap<>());
 	}
 
-	public Spot getSpot(String row, String col) {
-		int location = 4;
-		if (row.equals("Left")) {
-			if (col.equals("Top")) {
-				location = 0;
-			} else {
-				location = 3;
-			}
+	public Spot getSpot(String col, String row) {
+		int colOutput = -1;
+		if (col.equals("Left")) {
+			colOutput = 0;
 		}
-		if (row.equals("Right")) {
-			location = 5;
+		if (col.equals("Center") || col.equals("Middle")) {
+			colOutput = 1;
 		}
-		return board.get(location);
+		if (col.equals("Right")) {
+			colOutput = 2;
+		}
+
+		int rowOutput = -1;
+		if (row.equals("Top")) {
+			rowOutput = 0;
+		}
+		if (row.equals("Center") || row.equals("Middle")) {
+			rowOutput = 1;
+		}
+		if (row.equals("Bottom")) {
+			rowOutput = 2;
+		}
+		return getSpot(colOutput, rowOutput);
+	}
+
+	public Spot getSpot(int col, int row) {
+		return board.get(col + row * 3);
 	}
 
 	public String toString() {
