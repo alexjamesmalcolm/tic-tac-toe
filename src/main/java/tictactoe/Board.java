@@ -19,7 +19,10 @@ public class Board {
 		this(new TreeMap<>());
 	}
 
-	public Spot getSpot(String string, String string2) {
+	public Spot getSpot(String row, String col) {
+		if(row.equals("Bottom")) {
+			return new Spot("o");
+		}
 		return new Spot("x");
 	}
 
