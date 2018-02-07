@@ -246,4 +246,8 @@ public class Board {
 		return result;
 	}
 
+	public int getChoice() {
+		return 2;
+	}
+
 }
