@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -225,5 +226,25 @@ public class BoardTest {
 		expected.remove(0);
 		Set<Integer> actual = underTest.getChoices();
 		assertThat(actual, is(expected));
+	}
+
+	@Test
+	public void shouldNotMakeImpossibleChoice() {
+		emptyBoard.put(0, "x");
+		Board underTest = new Board(emptyBoard);
+		underTest.pick(0, "o");
+		Spot spot = underTest.getSpot(0);
+		String actual = spot.getSymbol();
+		assertThat(actual, is("x"));
+	}
+
+	@Test
+	public void shouldNotMakeImpossibleChoicePickingX() {
+		emptyBoard.put(0, "o");
+		Board underTest = new Board(emptyBoard);
+		underTest.pick(0, "x");
+		Spot spot = underTest.getSpot(0);
+		String actual = spot.getSymbol();
+		assertThat(actual, is("o"));
 	}
 }

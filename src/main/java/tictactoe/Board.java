@@ -161,7 +161,7 @@ public class Board {
 		for (int i = 0; i < 9; i++) {
 			Spot spot = board.get(i);
 			String symbol = spot.getSymbol();
-			if(symbol.equals("")) {
+			if (symbol.equals("")) {
 				result.add(i);
 			}
 		}
@@ -169,8 +169,14 @@ public class Board {
 	}
 
 	public void pick(int key, String value) {
-		Spot spot = new Spot(value);
-		board.put(key, spot);
+		if (board.get(key).getSymbol().equals("")) {
+			Spot spot = new Spot(value);
+			board.put(key, spot);
+		}
+	}
+
+	public Spot getSpot(int key) {
+		return board.get(key);
 	}
 
 }
