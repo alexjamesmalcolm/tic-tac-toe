@@ -246,4 +246,34 @@ public class BoardTest {
 		String actual = spot.getSymbol();
 		assertThat(actual, is("o"));
 	}
+	
+	@Test
+	public void shouldRateBoardsHighlyInWhichXWins() {
+		emptyBoard.put(0, "x");
+		emptyBoard.put(1, "x");
+		emptyBoard.put(2, "x");
+		Board underTest = new Board(emptyBoard);
+		int rating = underTest.rate("x");
+		assertThat(rating, is(10));
+	}
+	
+	@Test
+	public void shouldRateBoardsPoorlyInWhichXWins() {
+		emptyBoard.put(0, "x");
+		emptyBoard.put(1, "x");
+		emptyBoard.put(2, "x");
+		Board underTest = new Board(emptyBoard);
+		int rating = underTest.rate("o");
+		assertThat(rating, is(-10));
+	}
+	
+	@Test
+	public void shouldRateBoardsHighlyInWhichOWins() {
+		emptyBoard.put(0, "o");
+		emptyBoard.put(1, "o");
+		emptyBoard.put(2, "o");
+		Board underTest = new Board(emptyBoard);
+		int rating = underTest.rate("o");
+		assertThat(rating, is(10));
+	}
 }

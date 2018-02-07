@@ -2,6 +2,7 @@ package tictactoe;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -9,7 +10,7 @@ import java.util.TreeMap;
 
 public class Board {
 
-	private Map<Integer, Spot> board = new TreeMap<Integer, Spot>();
+	private Map<Integer, Spot> board = new HashMap<Integer, Spot>();
 
 	public Board(Map<Integer, String> board) {
 		for (int i = 0; i < 9; i++) {
@@ -179,4 +180,22 @@ public class Board {
 		return board.get(key);
 	}
 
+	@Override
+	public Board clone() {
+		return new Board();
+	}
+
+	public int rate(String symbol) {
+		if(symbol.equals("x")) {
+			if(hasXWon()) {
+				return 10;
+			}
+		}
+		if(symbol.equals("o")) {
+			if(hasXWon()) {
+				return -10;
+			}
+		}
+		return 0;
+	}
 }
