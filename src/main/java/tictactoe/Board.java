@@ -195,6 +195,9 @@ public class Board {
 			if(hasXWon()) {
 				return -10;
 			}
+			if(hasOWon()) {
+				return 10;
+			}
 		}
 		return 0;
 	}
