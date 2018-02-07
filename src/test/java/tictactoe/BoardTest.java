@@ -1,5 +1,6 @@
 package tictactoe;
 
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -350,11 +351,20 @@ public class BoardTest {
 	// }
 	
 	@Test
-	public void shouldGetBestChoice() {
+	public void shouldGetBestChoiceTwo() {
 		emptyBoard.put(0, "x");
 		emptyBoard.put(1, "x");
 		Board underTest = new Board(emptyBoard);
-		int choice = underTest.getChoice();
-		assertThat(choice, is(2));
+		Set<Integer> choice = underTest.getGoodChoices("x");
+		assertThat(choice, contains(2));
+	}
+	
+	@Test
+	public void shouldGetBestChoiceThree() {
+		emptyBoard.put(0, "x");
+		emptyBoard.put(6, "x");
+		Board underTest = new Board(emptyBoard);
+		Set<Integer> choice = underTest.getGoodChoices("x");
+		assertThat(choice, contains(3));
 	}
 }

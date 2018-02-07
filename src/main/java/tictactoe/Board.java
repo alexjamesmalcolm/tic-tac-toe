@@ -5,8 +5,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class Board {
 
@@ -246,8 +248,15 @@ public class Board {
 		return result;
 	}
 
-	public int getChoice() {
-		return 2;
+	public Set<Integer> getGoodChoices(String symbol) {
+		Map<Integer, Integer> choices = rateChoices(symbol, true);
+		Set<Integer> goodChoices = new TreeSet<Integer>();
+		for (Entry<Integer, Integer> choice : choices.entrySet()) {
+			if(choice.getValue() == 10) {
+				goodChoices.add(choice.getKey());
+			}
+		}
+		return goodChoices;
 	}
 
 }
