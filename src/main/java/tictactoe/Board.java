@@ -23,9 +23,9 @@ public class Board {
 	public Board() {
 		this(new TreeMap<>());
 	}
-	
+
 	public Board(Board another) {
-		this.board = another.board;
+		this.board.putAll(another.getBoard());
 	}
 
 	public Spot getSpot(String col, String row) {
@@ -62,7 +62,11 @@ public class Board {
 		String output = "";
 		for (int i = 0; i < 9; i++) {
 			String currentSymbol = board.get(i).getSymbol();
-			output += currentSymbol;
+			if (currentSymbol.equals("")) {
+				output += " ";
+			} else {
+				output += currentSymbol;
+			}
 			if ((i + 1) % 3 == 0 && i < 8) {
 				output += "\n";
 			} else if (i < 8) {
@@ -214,5 +218,19 @@ public class Board {
 		newBoard.pick(position, symbol);
 		int rating = newBoard.rate(symbol);
 		return rating;
+	}
+
+	private Map<Integer, Spot> getBoard() {
+		return board;
+	}
+
+	public Map<Integer, Integer> rateChoices(String symbol) {
+		Map<Integer, Integer> result = new TreeMap<>();
+		Set<Integer> choices = getChoices();
+		for (int choice : choices) {
+			int rating = rate(symbol, choice);
+			result.put(choice, rating);
+		}
+		return result;
 	}
 }

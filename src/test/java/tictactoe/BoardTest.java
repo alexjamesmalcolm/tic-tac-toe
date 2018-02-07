@@ -286,7 +286,7 @@ public class BoardTest {
 		int rating = underTest.rate("x");
 		assertThat(rating, is(-10));
 	}
-	
+
 	@Test
 	public void shouldRateChoiceAtTwoHighlyForO() {
 		emptyBoard.put(0, "o");
@@ -295,7 +295,7 @@ public class BoardTest {
 		int rating = underTest.rate("o", 2);
 		assertThat(rating, is(10));
 	}
-	
+
 	@Test
 	public void shouldRateChoiceAtThreeEventlyForO() {
 		emptyBoard.put(0, "o");
@@ -303,5 +303,22 @@ public class BoardTest {
 		Board underTest = new Board(emptyBoard);
 		int rating = underTest.rate("o", 3);
 		assertThat(rating, is(0));
+	}
+	
+	@Test
+	public void shouldGetAllRatingsForO() {
+		emptyBoard.put(0, "o");
+		emptyBoard.put(1, "o");
+		emptyBoard.put(4, "o");
+		Board underTest = new Board(emptyBoard);
+		Map<Integer, Integer> ratings = underTest.rateChoices("o");
+		Map<Integer, Integer> expected = new TreeMap<>();
+		expected.put(2, 10);
+		expected.put(3, 0);
+		expected.put(5, 0);
+		expected.put(6, 0);
+		expected.put(7, 10);
+		expected.put(8, 10);
+		assertThat(ratings, is(expected));
 	}
 }
