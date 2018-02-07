@@ -7,6 +7,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 import org.junit.Before;
@@ -196,5 +197,13 @@ public class BoardTest {
 		Board underTest = new Board(emptyBoard);
 		boolean status = underTest.hasOWon();
 		assertThat(status, is(false));
+	}
+	
+	@Test
+	public void shouldReturnAllPossibleChoices() {
+		Board underTest = new Board(emptyBoard);
+		Set<Integer> expected = emptyBoard.keySet();
+		Set<Integer> actual = underTest.getChoices();
+		assertThat(actual, is(expected));
 	}
 }

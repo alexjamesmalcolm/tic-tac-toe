@@ -3,6 +3,7 @@ package tictactoe;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 public class Board {
@@ -67,6 +68,10 @@ public class Board {
 
 	public boolean hasXWon() {
 		return hasSomeoneWon("x");
+	}
+
+	public boolean hasOWon() {
+		return hasSomeoneWon("o");
 	}
 
 	private boolean hasSomeoneWon(String winSymbol) {
@@ -150,8 +155,8 @@ public class Board {
 		return row;
 	}
 
-	public boolean hasOWon() {
-		return hasSomeoneWon("o");
+	public Set<Integer> getChoices() {
+		return board.keySet();
 	}
 
 }
