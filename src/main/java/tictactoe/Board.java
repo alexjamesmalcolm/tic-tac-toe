@@ -168,4 +168,9 @@ public class Board {
 		return result;
 	}
 
+	public void pick(int key, String value) {
+		Spot spot = new Spot(value);
+		board.put(key, spot);
+	}
+
 }

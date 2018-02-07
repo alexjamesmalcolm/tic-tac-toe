@@ -216,4 +216,14 @@ public class BoardTest {
 		Set<Integer> actual = underTest.getChoices();
 		assertThat(actual, is(expected));
 	}
+
+	@Test
+	public void shouldMakePossibleChoice() {
+		Board underTest = new Board(emptyBoard);
+		underTest.pick(0, "o");
+		Set<Integer> expected = emptyBoard.keySet();
+		expected.remove(0);
+		Set<Integer> actual = underTest.getChoices();
+		assertThat(actual, is(expected));
+	}
 }
