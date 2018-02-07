@@ -6,7 +6,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 public class SpotTest {
-	
+
 	@Test
 	public void shouldBeEmpty() {
 		String symbol = "";
@@ -14,7 +14,7 @@ public class SpotTest {
 		String returnedSymbol = underTest.getSymbol();
 		assertThat(returnedSymbol, is(""));
 	}
-	
+
 	@Test
 	public void shouldBeX() {
 		String symbol = "x";
