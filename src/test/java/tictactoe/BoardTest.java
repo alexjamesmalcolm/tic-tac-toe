@@ -286,4 +286,22 @@ public class BoardTest {
 		int rating = underTest.rate("x");
 		assertThat(rating, is(-10));
 	}
+	
+	@Test
+	public void shouldRateChoiceAtTwoHighlyForO() {
+		emptyBoard.put(0, "o");
+		emptyBoard.put(1, "o");
+		Board underTest = new Board(emptyBoard);
+		int rating = underTest.rate("o", 2);
+		assertThat(rating, is(10));
+	}
+	
+	@Test
+	public void shouldRateChoiceAtThreeEventlyForO() {
+		emptyBoard.put(0, "o");
+		emptyBoard.put(1, "o");
+		Board underTest = new Board(emptyBoard);
+		int rating = underTest.rate("o", 3);
+		assertThat(rating, is(0));
+	}
 }

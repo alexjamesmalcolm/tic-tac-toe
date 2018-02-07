@@ -23,6 +23,10 @@ public class Board {
 	public Board() {
 		this(new TreeMap<>());
 	}
+	
+	public Board(Board another) {
+		this.board = another.board;
+	}
 
 	public Spot getSpot(String col, String row) {
 		int colOutput = -1;
@@ -203,5 +207,12 @@ public class Board {
 			}
 		}
 		return 0;
+	}
+
+	public int rate(String symbol, int position) {
+		Board newBoard = new Board(this);
+		newBoard.pick(position, symbol);
+		int rating = newBoard.rate(symbol);
+		return rating;
 	}
 }
