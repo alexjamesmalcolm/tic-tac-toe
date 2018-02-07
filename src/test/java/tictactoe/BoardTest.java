@@ -101,7 +101,7 @@ public class BoardTest {
 		String symbol = spot.getSymbol();
 		assertThat(symbol, is("x"));
 	}
-	
+
 	@Test
 	public void shouldHaveMiddleTopBeX() {
 		allOBoard.put(1, "x");
@@ -110,7 +110,7 @@ public class BoardTest {
 		String symbol = spot.getSymbol();
 		assertThat(symbol, is("x"));
 	}
-	
+
 	@Test
 	public void shouldHaveXWon() {
 		emptyBoard.put(0, "x");
@@ -120,7 +120,7 @@ public class BoardTest {
 		boolean status = underTest.hasXWon();
 		assertTrue(status);
 	}
-	
+
 	@Test
 	public void shouldHaveXNotWin() {
 		emptyBoard.put(0, "x");
@@ -129,7 +129,7 @@ public class BoardTest {
 		boolean status = underTest.hasXWon();
 		assertFalse(status);
 	}
-	
+
 	@Test
 	public void shouldHaveXWinFromMiddleRow() {
 		emptyBoard.put(3, "x");
@@ -139,7 +139,7 @@ public class BoardTest {
 		boolean status = underTest.hasXWon();
 		assertTrue(status);
 	}
-	
+
 	@Test
 	public void shouldHaveXWinFromBottomRow() {
 		emptyBoard.put(6, "x");
@@ -149,7 +149,7 @@ public class BoardTest {
 		boolean status = underTest.hasXWon();
 		assertThat(status, is(true));
 	}
-	
+
 	@Test
 	public void shouldHaveXWinFromLeftCol() {
 		emptyBoard.put(0, "x");
@@ -159,7 +159,7 @@ public class BoardTest {
 		boolean status = underTest.hasXWon();
 		assertThat(status, is(true));
 	}
-	
+
 	@Test
 	public void shouldHaveXWinFromFirstDiagonal() {
 		emptyBoard.put(0, "x");
@@ -169,7 +169,7 @@ public class BoardTest {
 		boolean status = underTest.hasXWon();
 		assertThat(status, is(true));
 	}
-	
+
 	@Test
 	public void shouldHaveXWinFromSecondDiagonal() {
 		emptyBoard.put(2, "x");
@@ -179,7 +179,7 @@ public class BoardTest {
 		boolean status = underTest.hasXWon();
 		assertThat(status, is(true));
 	}
-	
+
 	@Test
 	public void shouldHaveOWinFromSecondDiagonal() {
 		emptyBoard.put(2, "o");
@@ -189,7 +189,7 @@ public class BoardTest {
 		boolean status = underTest.hasOWon();
 		assertThat(status, is(true));
 	}
-	
+
 	@Test
 	public void shouldHaveONotWinFromSecondDiagonal() {
 		emptyBoard.put(2, "o");
@@ -198,11 +198,21 @@ public class BoardTest {
 		boolean status = underTest.hasOWon();
 		assertThat(status, is(false));
 	}
-	
+
 	@Test
 	public void shouldReturnAllPossibleChoices() {
 		Board underTest = new Board(emptyBoard);
 		Set<Integer> expected = emptyBoard.keySet();
+		Set<Integer> actual = underTest.getChoices();
+		assertThat(actual, is(expected));
+	}
+
+	@Test
+	public void shouldReturnAllButOneTest() {
+		emptyBoard.put(0, "o");
+		Board underTest = new Board(emptyBoard);
+		Set<Integer> expected = emptyBoard.keySet();
+		expected.remove(0);
 		Set<Integer> actual = underTest.getChoices();
 		assertThat(actual, is(expected));
 	}

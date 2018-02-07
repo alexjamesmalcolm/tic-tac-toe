@@ -2,6 +2,7 @@ package tictactoe;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -156,7 +157,15 @@ public class Board {
 	}
 
 	public Set<Integer> getChoices() {
-		return board.keySet();
+		Set<Integer> result = new HashSet<>();
+		for (int i = 0; i < 9; i++) {
+			Spot spot = board.get(i);
+			String symbol = spot.getSymbol();
+			if(symbol.equals("")) {
+				result.add(i);
+			}
+		}
+		return result;
 	}
 
 }
