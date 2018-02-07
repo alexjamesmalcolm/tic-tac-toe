@@ -283,7 +283,7 @@ public class BoardTest {
 		emptyBoard.put(1, "o");
 		emptyBoard.put(2, "o");
 		Board underTest = new Board(emptyBoard);
-		int rating = underTest.rate("o");
+		int rating = underTest.rate("x");
 		assertThat(rating, is(-10));
 	}
 }

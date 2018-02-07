@@ -186,16 +186,19 @@ public class Board {
 	}
 
 	public int rate(String symbol) {
-		if(symbol.equals("x")) {
-			if(hasXWon()) {
+		if (symbol.equals("x")) {
+			if (hasXWon()) {
 				return 10;
 			}
-		}
-		if(symbol.equals("o")) {
-			if(hasXWon()) {
+			if (hasOWon()) {
 				return -10;
 			}
-			if(hasOWon()) {
+		}
+		if (symbol.equals("o")) {
+			if (hasXWon()) {
+				return -10;
+			}
+			if (hasOWon()) {
 				return 10;
 			}
 		}
