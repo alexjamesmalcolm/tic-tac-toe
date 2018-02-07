@@ -333,19 +333,19 @@ public class BoardTest {
 		assertThat(ratings, is(expected));
 	}
 
-	// @Test
-	// public void shouldRateNotPickingTwoPoorly() {
-	// emptyBoard.put(0, "o");
-	// emptyBoard.put(1, "o");
-	// Board underTest = new Board(emptyBoard);
-	// Map<Integer, Integer> ratings = underTest.rateChoices("o", true);
-	// Map<Integer, Integer> expected = new TreeMap<>();
-	// expected.put(3, -10);
-	// expected.put(4, -10);
-	// expected.put(5, -10);
-	// expected.put(6, -10);
-	// expected.put(7, -10);
-	// expected.put(8, -10);
-	// assertThat(ratings, is(expected));
-	// }
+	@Test
+	public void shouldRateNotPickingTwoPoorly() {
+		emptyBoard.put(0, "o");
+		emptyBoard.put(1, "o");
+		Board underTest = new Board(emptyBoard);
+		Map<Integer, Integer> ratings = underTest.rateChoices("x", true);
+		Map<Integer, Integer> expected = new TreeMap<>();
+		expected.put(3, -10);
+		expected.put(4, -10);
+		expected.put(5, -10);
+		expected.put(6, -10);
+		expected.put(7, -10);
+		expected.put(8, -10);
+		assertThat(ratings, is(expected));
+	}
 }
