@@ -1,6 +1,5 @@
 package tictactoe;
 
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -349,32 +348,42 @@ public class BoardTest {
 	// expected.put(8, -10);
 	// assertThat(ratings, is(expected));
 	// }
-	
-	@Test
-	public void shouldGetBestChoiceTwo() {
-		emptyBoard.put(0, "x");
-		emptyBoard.put(1, "x");
-		Board underTest = new Board(emptyBoard);
-		Set<Integer> choice = underTest.getGoodChoices("x");
-		assertThat(choice, contains(2));
-	}
-	
-	@Test
-	public void shouldGetBestChoiceThree() {
-		emptyBoard.put(0, "x");
-		emptyBoard.put(6, "x");
-		Board underTest = new Board(emptyBoard);
-		Set<Integer> choice = underTest.getGoodChoices("x");
-		assertThat(choice, contains(3));
-	}
-	
-	@Test
-	public void shouldMakeOneOfTheBestChoices() {
-		emptyBoard.put(0, "x");
-		emptyBoard.put(1, "x");
-		emptyBoard.put(4, "x");
-		Board underTest = new Board(emptyBoard);
-		underTest.makeBestChoice("x");
-		assertThat(underTest.hasXWon(), is(true));
-	}
+
+//	@Test
+//	public void shouldGetBestChoiceTwo() {
+//		emptyBoard.put(0, "x");
+//		emptyBoard.put(1, "x");
+//		Board underTest = new Board(emptyBoard);
+//		Set<Integer> choice = underTest.getGoodChoices("x");
+//		assertThat(choice, contains(2));
+//	}
+//
+//	@Test
+//	public void shouldGetBestChoiceThree() {
+//		emptyBoard.put(0, "x");
+//		emptyBoard.put(6, "x");
+//		Board underTest = new Board(emptyBoard);
+//		Set<Integer> choice = underTest.getGoodChoices("x");
+//		assertThat(choice, contains(3));
+//	}
+
+//	@Test
+//	public void shouldMakeOneOfTheBestChoices() {
+//		emptyBoard.put(0, "x");
+//		emptyBoard.put(1, "x");
+//		emptyBoard.put(4, "x");
+//		Board underTest = new Board(emptyBoard);
+//		underTest.makeBestChoice("x");
+//		assertThat(underTest.hasXWon(), is(true));
+//	}
+//	
+//	@Test
+//	public void shouldMakeChoiceToPreventLoss() {
+//		emptyBoard.put(0, "o");
+//		emptyBoard.put(1, "o");
+//		Board underTest = new Board(emptyBoard);
+//		underTest.makeBestChoice("x");
+//		underTest.makeBestChoice("o");
+//		assertThat(underTest.hasOWon(), is(false));
+//	}
 }
