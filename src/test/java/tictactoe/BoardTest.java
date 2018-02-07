@@ -367,4 +367,14 @@ public class BoardTest {
 		Set<Integer> choice = underTest.getGoodChoices("x");
 		assertThat(choice, contains(3));
 	}
+	
+	@Test
+	public void shouldMakeOneOfTheBestChoices() {
+		emptyBoard.put(0, "x");
+		emptyBoard.put(1, "x");
+		emptyBoard.put(4, "x");
+		Board underTest = new Board(emptyBoard);
+		underTest.makeBestChoice("x");
+		assertThat(underTest.hasXWon(), is(true));
+	}
 }

@@ -259,4 +259,14 @@ public class Board {
 		return goodChoices;
 	}
 
+	public void makeBestChoice(String symbol) {
+		int goodChoice = getGoodChoice(symbol);
+		pick(goodChoice, symbol);
+	}
+
+	private int getGoodChoice(String symbol) {
+		int choice = getGoodChoices(symbol).iterator().next();
+		return choice;
+	}
+
 }
